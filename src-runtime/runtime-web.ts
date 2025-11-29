@@ -1,24 +1,24 @@
 // 使用 plugins/vite-plugin-init-autox-bridge.ts 转为 js, 添加到 html 中
 class AutoxBridge {
-  private _callbackStore_: { [key: number]: Function }
+  private _callback_store: { [key: number]: Function }
 
-  private _callbackCounter_: number
+  private _callback_counter: number
 
   constructor() {
-    this._callbackStore_ = {}
-    this._callbackCounter_ = 0
+    this._callback_store = {}
+    this._callback_counter = 0
   }
 
-  private _setCallback_(callback: Function) {
-    this._callbackCounter_ += 1
-    this._callbackStore_[this._callbackCounter_] = callback
-    return this._callbackCounter_
+  private _setCallback(callback: Function) {
+    this._callback_counter += 1
+    this._callback_store[this._callback_counter] = callback
+    return this._callback_counter
   }
 
-  private _getCallback_(callId: number) {
-    const callback = this._callbackStore_[callId]
+  private _getCallback(id: number) {
+    const callback = this._callback_store[id]
     if (callback) {
-      delete this._callbackStore_[callId]
+      delete this._callback_store[id]
     }
     return callback
   }
@@ -33,7 +33,7 @@ class AutoxBridge {
     let callId = -1
     try {
       if (callback) {
-        callId = this._setCallback_(callback)
+        callId = this._setCallback(callback)
       }
       const data = JSON.stringify({
         cmd,
@@ -55,7 +55,7 @@ class AutoxBridge {
     const callId = data.callId
     const args = data.args
 
-    const callbackFn = this._getCallback_(callId) // 获取函数指针
+    const callbackFn = this._getCallback(callId) // 获取函数指针
     if (callbackFn) {
       callbackFn(args) // 调用
     }

@@ -1,13 +1,14 @@
 {
   "arrayIndexInlay.enabled": false,
   // Disable the default formatter, use eslint instead
-  "prettier.enable": false,
+  "prettier.enable": true, // 启用 prettier
   "editor.formatOnSave": false,
 
   // Auto fix
+  // 关闭保存自动修复
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
-    "source.organizeImports": "never"
+    // "source.fixAll.eslint": "explicit",
+    // "source.organizeImports": "never"
   },
 
   // Silent the stylistic rules in you IDE, but still auto fix them

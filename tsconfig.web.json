@@ -16,7 +16,15 @@
     "noEmit": true,
     "isolatedModules": true,
     "skipLibCheck": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules",
+        "options": {
+          // "goToDefinition": true // 启用跳转到定义
+        }
+      }
+    ]
   },
   "include": ["src", "src-runtime/runtime-web.ts"]
 }

@@ -26,6 +26,7 @@ const antfuConfig = antfu({
     'eslint-comments/no-unlimited-disable': 'off',
     // 只允许最多空一行
     'style/no-multiple-empty-lines': ['error', { max: 1 }],
+    'eqeqeq': 'off',
   },
 })
 
