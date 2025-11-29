@@ -22,7 +22,11 @@ export default defineConfig({
     legalComments: 'none', // 移除注释
   },
   plugins: [
-    react(),
+    react({
+      babel: {
+        plugins: [['babel-plugin-react-compiler']],
+      },
+    }),
     initAutoxBridge(), // 给 index.html 添加调用 Auto.js 的 Bridge 工具函数
     viteSingleFile(), // 将所有 js 打包到 index.html 中 , 便于 WebView 加载
   ],
